@@ -1231,7 +1231,7 @@ function renderCatalog(){
   buildFilters();
   const filtered=activeCat==='Todas'?products:products.filter(p=>p.category===activeCat);
   document.getElementById('countLabel').textContent=`${filtered.length} peça${filtered.length!==1?'s':''}`;
-  document.getElementById('statProd').textContent=products.length+'+';
+  const sp = document.getElementById('statProd'); if(sp) sp.textContent=products.length+'+';
   const fallback=`data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'><rect fill='%23f0e9e2' width='300' height='400'/><text x='150' y='200' text-anchor='middle' fill='%23bdb0a8' font-size='16'>Sem foto</text></svg>`;
   document.getElementById('productsGrid').innerHTML=filtered.map((p,i)=>`
     <article class="card" data-id="${p.id}" style="animation-delay:${i*50}ms">
